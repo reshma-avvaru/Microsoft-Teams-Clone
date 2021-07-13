@@ -10,7 +10,7 @@ The website is hosted at https://teams-client-892ac.web.app/landing
 
 - [Features of the Application](#features-of-the-application)
 - [SDK Analysis](#sdk-analysis)
-- [Tech Stack Selection](#tech-stack-selection)
+- [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Agile Methodology](#usage-of-agile-methodology)
 - [Challenges Faced](#challenges-faced)
@@ -106,6 +106,93 @@ As a part of my explorations phase I have analysed the following:
 
 I had finally chosen Azure communnication because of it provides high quality video, audio and chat functionality.
 
+[(Back to top)](#table-of-contents)
 
+# Tech Stack
+-<b>Front-end:</b> Angular
+-<b>Back-end:</b> Django
+-<b>Database:</b> PostgreSQL
 
+[(Back to top)](#table-of-contents
+
+# Installation
+To use this project, follow the steps below:
+
+Initialise git on your terminal.
+
+```bash
+git init
+```
+Clone this repository.
+
+```bash
+git clone https://github.com/reshma-avvaru/Microsoft-Teams-Clone.git
+``` 
+
+Running client
+Change the directory. 
+
+```bash
+cd teamsClient
+```
+
+Open the repository with your code editor. 
+In case you do not have a code editor, it is recommended you use Visual Studio Code. 
+
+```bash
+code .
+```
+
+Open the terminal in Visual code by pressing Ctrl+J (Windows) and run the following commands:
+
+```bash
+npm i
+```
+After the required packages are installed, run the following command: 
+
+```bash
+ng serve
+```
+Please note: To run the machine on localhost:4200 you will have to add firebaseconfig to the environment 
+
+Running back-end:
+Change the directory. 
+
+```bash
+cd teamsClient
+```
+Open the repository with your code editor. 
+In case you do not have a code editor, it is recommended you use Visual Studio Code. 
+
+```bash
+code .
+```
+After the required packages are installed, run the following command: 
+
+Creating a virtual environment
+- Create a python virtual environment inside the project directory using the command `python3 -m venv env`.
+- To activate the environment, run `source env/bin/activate` in **Linux** and `\env\Scripts\activate.bat` in **Windows**.
+- To exit the virtual environment, run `deactivate`.
+
+Installing dependencies
+
+```bash
+pip install -r req.txt
+```
+Making migrations
+
+```bash
+python3 manage.py makemigrations
+```
+```bash
+python3 manage.py migrate 
+```
+```bash
+python3 manage.py runserver
+```
+Please note: To run the machine on localhost:8000 you will add the following to your .env
+-SECRET_KEY
+-CONNECTION_STRING (azure communication services resource connection string)
+-END_POINT (azure communication services resource end point)
+-DATABASE_URL
 
