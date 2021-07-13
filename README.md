@@ -1,2 +1,2 @@
 ### Microsoft Teams Clone
-https://github.com/reshma-avvaru/Microsoft-TeamsClone/assets/main/landing.png?raw=true
+![alt text](https://github.com/reshma-avvaru/Microsoft-TeamsClone/assets/blob/main/landing.png?raw=true)
