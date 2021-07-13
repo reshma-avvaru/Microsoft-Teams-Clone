@@ -200,7 +200,7 @@ The [ppt](https://drive.google.com/file/d/1rsDnsGo6Ms44HjQD3P7jJ2HnN-U909iw/view
 
 # The Web Application
 
-I have hosted website using firebase hosting at https://teams-client-892ac.web.app/
-I have hosted django REST API on heroku
+- I have hosted website using firebase hosting at https://teams-client-892ac.web.app/
+- I have hosted django REST API on heroku
 
 ![Screenshot (46)](https://user-images.githubusercontent.com/69675204/125506185-017753c0-2da1-4050-bd02-42faf690c6b0.png)
