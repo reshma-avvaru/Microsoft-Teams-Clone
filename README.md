@@ -202,3 +202,5 @@ The [ppt](https://drive.google.com/file/d/1rsDnsGo6Ms44HjQD3P7jJ2HnN-U909iw/view
 
 I have hosted website using firebase hosting at https://teams-client-892ac.web.app/
 I have hosted django REST API on heroku
+
+![Screenshot (42)](https://user-images.githubusercontent.com/69675204/125505790-353eeba5-9251-40ac-b097-f2657c22a661.png)
