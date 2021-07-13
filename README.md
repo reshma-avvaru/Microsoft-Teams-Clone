@@ -200,5 +200,5 @@ The [ppt](https://drive.google.com/file/d/1rsDnsGo6Ms44HjQD3P7jJ2HnN-U909iw/view
 
 # The Web Application
 
-I have hosted my Angular application using firebase hosting at https://teams-client-892ac.web.app/
-I have hosted my django REST API on heroku
+I have hosted website using firebase hosting at https://teams-client-892ac.web.app/
+I have hosted django REST API on heroku
