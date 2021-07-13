@@ -13,10 +13,7 @@ The website is hosted at https://teams-client-892ac.web.app/landing
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Agile Methodology](#usage-of-agile-methodology)
-- [Challenges Faced](#challenges-faced)
 - [The Web Application](#try-the-web-application)
-- [Future Scope](#future-scope)
-- [Support and Contact](#support-and-contact)
 
 
 # Features of the Application
@@ -104,7 +101,7 @@ As a part of my explorations phase I have analysed the following:
 -	Video calling SDK not available for python
 -	Requires generation and management of access tokens ans user id
 
-I had finally chosen Azure communnication because of it provides high quality video, audio and chat functionality.
+I had finally chosen Azure communnication as it provides high quality video, audio and chat functionality.
 
 [(Back to top)](#table-of-contents)
 
@@ -191,8 +188,12 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 Please note: To run the machine on localhost:8000 you will add the following to your .env
--SECRET_KEY
--CONNECTION_STRING (azure communication services resource connection string)
--END_POINT (azure communication services resource end point)
--DATABASE_URL
+- SECRET_KEY
+- CONNECTION_STRING (azure communication services resource connection string)
+- END_POINT (azure communication services resource end point)
+- DATABASE_URL
 
+# Usage of Agile Methodology 
+
+From the AMA session I had understood that inorder to develop software to meet the high requirements of present market agile methodology is the best practice. Understanding this I have incorporated it into my project
+The [ppt](https://drive.google.com/file/d/1rsDnsGo6Ms44HjQD3P7jJ2HnN-U909iw/view?usp=sharing) contains deatils of my sprints.
