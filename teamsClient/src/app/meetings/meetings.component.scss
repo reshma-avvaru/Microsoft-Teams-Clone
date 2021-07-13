@@ -1,0 +1,72 @@
+.container-fluid{
+    height: 100%;
+    width: 100%;
+    background-color: #303030;
+}
+.logo{
+    height:80px;
+    padding: 10px;
+    margin-left: 8px;
+    margin-bottom: 5px;
+}
+.title{
+    color:white;
+    font-size: 32px;
+    position: relative;
+    padding-top: 30px;
+    padding-left: 10px;
+}
+.brand{
+color: black;
+font-size: 36px;
+margin-left: -15px;
+}
+li{
+    list-style: none;
+}
+.btn{
+ background-color:#303030;
+}
+.sign-out{
+    position: absolute;
+    right:35px;
+    top:13px
+}
+.accord{
+   // width: 300px;
+    left:30px;
+    //margin: 5%;
+    //right: 50%;
+
+}
+.heading{
+    //font-size: 18px;
+}
+.route{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    top:10px;
+    font-weight: 400;
+    cursor: pointer;
+    &:hover{
+        color: black;
+    }
+}
+.id{
+    font-weight: 500;
+}
+.time{
+    position: absolute;
+    right: 10%;
+}
+::ng-deep .mat-expansion-panel{
+    //width: 50% !important;
+}
+.nomeeting{
+  color: rgb(190, 185, 185);
+  font-size: 50px;
+  font-weight: 400;
+  width: 100%;
+  height: 70%;
+}

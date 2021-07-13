@@ -1,0 +1,197 @@
+<mat-toolbar color="primary">
+<img class="navbar-brand logo" src="../../assets/logo.svg">
+<span class="brand">Microsoft Teams</span>
+    <ul>
+        <li *ngIf="!incall">
+            <a class="route" routerLink="/meeting">My meetings</a>
+        </li>
+        <li>
+        <button mat-raised-button class="btn sign-out" (click)="logout()" *ngIf="!incall">Sign Out</button>
+        <button mat-raised-button class="copy btn" [cdkCopyToClipboard]="Invite()" [hidden]="!incall"
+        (click)="openSnackBar()">Group Invite</button>
+		</li>
+        <li *ngIf="sharingScreen">
+        <span  class="screentoggle">Video<mat-slide-toggle  class="px-3" [(ngModel)]="screenView" ></mat-slide-toggle>Screen</span>
+        </li>
+		<li class="controls" *ngIf="incall">
+		<span  class="icon">
+            <mat-icon class="action-icons" (click)="muteaudio()" [hidden]="!isMicOn">mic</mat-icon>
+            <mat-icon class="action-icons"  (click)="unmuteaudio()" [hidden]="isMicOn">mic_off</mat-icon>
+            <mat-icon  class="action-icons" (click)="endCall()" [hidden]="disconnect"> call_end</mat-icon>
+            <mat-icon class="action-icons" (click)="startvideo()" [hidden]="isVideoOn">videocam_off</mat-icon>
+            <mat-icon class="action-icons"  (click)="stopvideo()" [hidden]="!isVideoOn">videocam</mat-icon>
+            <mat-icon class="action-icons" (click)="stopscreen()" [hidden]="!sharingScreen"> cancel_presentation</mat-icon>
+            <mat-icon class="action-icons" (click)="startscreen()" [hidden]="sharingScreen"> present_to_all</mat-icon>
+		</span>
+		</li>
+		<li class="heroicons" *ngIf="incall">
+		<span>
+		<img class="action-icons" src="../../assets/participants.svg" (click)="sidenav.close();sidenav3.close();sidenav2.toggle();">
+		<img class="action-icons" src="../../assets/chat.svg" (click)="sidenav2.close();sidenav3.close();sidenav.toggle();">
+		<img class="action-icons" src="../../assets/settings.svg" (click)="sidenav.close();sidenav2.close();sidenav3.toggle();">
+		</span>
+		</li>
+    </ul>
+</mat-toolbar>
+<div class="entry " *ngIf="start">
+    <div class="d-flex justify-content-center entry-btn">
+        <button mat-raised-button  color="primary" class="mx-4 px-4 py-1" (click)="joinForm()">Join Meeting</button>
+        <button mat-raised-button color="primary" class="px-4 py-1" (click)="startForm()">Start Meeting</button>
+    </div>
+    <div class="entry-form" *ngIf="joinform">
+        <ul class="row">
+        <li class="col-12 d-flex justify-content-center" >
+        <mat-form-field class="entry-form-field" appearance="fill">
+            <mat-label>Group ID</mat-label>
+            <input matInput placeholder="Enter group id" [(ngModel)]="group">
+        </mat-form-field>
+        </li>
+        <li  class="col-12 d-flex justify-content-center">
+        <mat-form-field  class="entry-form-field" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput  placeholder="Enter Password"  [(ngModel)]="password">
+        </mat-form-field></li>
+        <li class="col-12 d-flex justify-content-center">
+            <button mat-raised-button color="primary" (click)="joinGroupCall()" [disabled]="loading">Join</button>
+        </li>
+        <li class="d-flex justify-content-center my-3" *ngIf="loading"><mat-spinner></mat-spinner></li>
+    </ul>
+    </div>
+    <div class="entry-form"  *ngIf="startform">
+        <ul class="row">
+        <li  class="col-12 d-flex justify-content-center">
+        <mat-form-field  class="entry-form-field" appearance="fill">
+            <mat-label>Set meeting title</mat-label>
+            <input matInput  placeholder="Enter Title"  [(ngModel)]="topic">
+        </mat-form-field></li>
+        <li  class="col-12 d-flex justify-content-center">
+        <mat-form-field  class="entry-form-field" appearance="fill">
+            <mat-label>Set a password</mat-label>
+            <input matInput  placeholder="Enter Password"  [(ngModel)]="password">
+        </mat-form-field></li>
+        <li class="col-12 d-flex justify-content-center">
+            <button mat-raised-button color="primary" (click)="startGroupCall()" [disabled]="loading">Start</button>
+        </li>
+        <li class="d-flex justify-content-center my-3" *ngIf="loading"><mat-spinner></mat-spinner></li>
+    </ul>
+    </div>
+</div>
+
+
+<div id="preview" *ngIf="preview">
+    <div id="preview-window">
+        <div class="row">
+        <div id="previewvideo" class="col-7">
+            <div class="altImage" *ngIf="!isVideoOn">
+                {{username}}
+            </div>
+            <!--<img style='height:100%;width:100%;display:inline' alt="Bootstrap Image Preview" src="../../assets/photo.jpg" />-->
+        </div>
+        <ul class="col-5 preview-settings d-inline-block align-content-center">
+        <li>
+        <mat-form-field appearance="fill">
+        <mat-label>Video Device</mat-label>
+            <mat-select [(ngModel)]="videoDeviceSelected"  (ngModelChange)="videoDeviceSettings($event)">
+                <mat-option  *ngFor="let v of videoDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        <li>
+        <mat-form-field appearance="fill">
+        <mat-label>Microphone</mat-label>
+            <mat-select  [(ngModel)]="audioInputDeviceSelected"  (ngModelChange)="audioInputDeviceSettings($event)">
+                <mat-option  *ngFor="let v of audioInputDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        <li>
+        <mat-form-field appearance="fill">
+        <mat-label>Speaker</mat-label>
+            <mat-select  [(ngModel)]="audioOutputDeviceSelected"  (ngModelChange)="audioOutputDeviceSettings($event)">
+                <mat-option *ngFor="let v of audioOutputDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        </ul>
+        </div>
+        <div class="join-settings row mt-2">
+            <div class="display-settings col-7 d-flex justify-content-center">
+            <mat-slide-toggle color="primary" [(ngModel)]="isMicOn" class="px-1" ></mat-slide-toggle><mat-icon style="margin-right:15px"[hidden]="!isMicOn">mic</mat-icon><mat-icon style="margin-right:15px"[hidden]="isMicOn">mic_off</mat-icon>
+            <!--<mat-slide-toggle color="primary" [(ngModel)]="isVideoOn" class="px-1" (ngModelChange)="localPreview()"></mat-slide-toggle><mat-icon [hidden]="!isVideoOn" >videocam</mat-icon><mat-icon [hidden]="isVideoOn" >videocam_off</mat-icon>-->
+            </div>
+            <div class="col-5 d-flex justify-content-center"><button mat-raised-button color="primary" class="join" (click)="JoinCall()"> Join </button></div>
+        </div>
+        <div class="mt-2">To join with default device click join</div>
+        <div class="mt-2">Tip: Enter muted to avoid disturbance</div>
+    </div>
+</div>
+<mat-sidenav-container class="chat-container" [hidden]="!incall">
+<mat-sidenav #sidenav mode="side"  class="chat-sidenav" fixedInViewport="Fixed" fixedTopGap="60" position="end">
+
+<div class="chat">
+    <div id="chat-history" #chathst class="chat-messages p-4" [scrollTop]="chathst.scrollHeight" style='white-space:pre'>
+    </div>
+</div>
+<div class="send-field flex-grow-0 py-3 px-4 border-top">
+    <div class="input-group">
+        <textarea matInput style="background:transparent;border:0px;color:white;" [(ngModel)]="message" id="chat-message" type="text" class="form-control" placeholder="Type your message"></textarea>
+        <i class='attachment'
+        (click)="toggled = !toggled"
+        [(emojiPickerIf)]="toggled"
+        [emojiPickerDirection]="'top'"
+        (emojiPickerSelect)="handleSelection($event)">😄</i>
+        <mat-icon color="primary" style="cursor: pointer;font-size:30px" (click)="sendMessage()" style="cursor: pointer;font-size:35px">send</mat-icon>
+</div>
+</div>
+</mat-sidenav>
+<mat-sidenav #sidenav2 mode="side"  class="chat-sidenav" fixedInViewport="Fixed" fixedTopGap="60" position="end">
+<div id="participant-list">
+    <div class="participant-title">Participants List<span>&nbsp;({{participantcount}})</span></div>
+    <hr>
+    <div id="participant-inner">
+    </div>
+</div>
+</mat-sidenav>
+<mat-sidenav #sidenav3 mode="side"  class="chat-sidenav" fixedInViewport="Fixed" fixedTopGap="60" position="end">
+    <div class="device-title">Device settings</div>
+    <hr class="my-3">
+<ul class="d-inline-block">
+        <li>
+        <mat-form-field class="entry-form-field"  appearance="fill">
+        <mat-label>Video Device</mat-label>
+            <mat-select [(ngModel)]="videoDeviceSelected"  (ngModelChange)="videoDeviceSettings($event)">
+                <mat-option  *ngFor="let v of videoDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        <li>
+        <mat-form-field class="entry-form-field"  appearance="fill">
+        <mat-label>Microphone</mat-label>
+            <mat-select  [(ngModel)]="audioInputDeviceSelected"  (ngModelChange)="audioInputDeviceSettings($event)">
+                <mat-option  *ngFor="let v of audioInputDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        <li>
+        <mat-form-field class="entry-form-field"  appearance="fill">
+        <mat-label>Speaker</mat-label>
+            <mat-select  [(ngModel)]="audioOutputDeviceSelected"  (ngModelChange)="audioOutputDeviceSettings($event)">
+                <mat-option *ngFor="let v of audioOutputDevices" [value]="v.id">{{v.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </li>
+        </ul>
+</mat-sidenav>
+<mat-sidenav-content>
+<div class="content d-flex justify-content-center" *ngIf="incall">
+    <div id="video-collection" class="videocall" [hidden]="screenView">
+    </div>
+    <div id="screen" class="screen" [hidden]="!screenView">
+		<div class="presenterScreen"  class="d-flex justify-content-center align-items-center " *ngIf="ispresenter">
+			You are presenting
+		</div>
+    </div> 
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<!--<a href="https://www.freepik.com/vectors/abstract">Abstract vector created by vectorjuice - www.freepik.com</a>-->			

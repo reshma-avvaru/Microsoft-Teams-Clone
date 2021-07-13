@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+<img class="navbar-brand logo" src="../../assets/logo.svg">
+<span class="brand">Microsoft Teams</span>
+    <ul>
+        <li>
+            <a class="route" routerLink="/group">Go to conference</a>
+        </li>
+    <li>
+        <button mat-raised-button class="btn sign-out" (click)="logout()">Sign Out</button>
+    </li>
+    </ul>
+</mat-toolbar>
+<div class="container-fluid">
+<div class="title">Your Meetings</div>
+<hr>
+<div class="meetings row">
+    <mat-accordion class="accord col-6" *ngFor='let group of data; index as i'>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-panel-title class="heading">
+                {{group.topic}}
+            </mat-panel-title>
+            <mat-panel-description class="time">
+            {{ group.date_time | date:'short'}}     
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="pb-2"><span class="id">Created by:</span>&nbsp; {{group.moderator}}</div>
+            <div class="pb-2"><span class="pass" class="id">Group ID:</span>&nbsp; {{group.group_id}}</div>
+            <div><span class="id">Password:</span>&nbsp; {{group.password}}</div>
+            <mat-icon style="cursor:pointer" class="mt-1" [cdkCopyToClipboard]="Invite(i)" (click)="openSnackBar()" >content_copy</mat-icon>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+    <div class="d-flex justify-content-center align-items-center nomeeting"  *ngIf="nomeetings">
+        No Meetings to show
+    </div>
+</div>

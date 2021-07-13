@@ -1,0 +1,1 @@
+web: gunicorn teamsback.wsgi --preload --log-file -

@@ -1,0 +1,4 @@
+denv
+__pycache__
+teamsback/.env
+db.sqlite3

@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100vh;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+html, body {margin: 0; height: 100vh;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  body::-webkit-scrollbar{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .video-tile{
+    width:40%;
+    height: 165px;
+    //max-height:300px;
+    aspect-ratio:16/9 !important;
+    //border: 1px solid gray;
+    border-radius: 10px;
+    margin: 1%;
+    overflow: hidden;
+}
+.chat .chat-history .message-data {
+  margin-bottom: 15px
+}
+
+.chat .chat-history .message-data img {
+  border-radius: 40px;
+  width: 40px
+}
+
+.chat .chat-history .message-data-time {
+  color: #434651;
+  padding-left: 6px
+}
+.chat .chat-history .message-data-time {
+  color: #434651;
+  padding-left: 6px
+}
+
+.chat .chat-history .message {
+  color: #444;
+  padding: 18px 20px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  display: inline-block;
+  position: relative
+}
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #fff;
+  border-width: 10px;
+  margin-left: -10px
+}
+.chat .chat-history .my-message {
+  background: #efefef
+}
+.chat .chat-history .my-message:after {
+  bottom: 100%;
+  left: 30px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #efefef;
+  border-width: 10px;
+  margin-left: -10px
+}
+// .video-ele{
+//     aspect-ratio:16/9;
+//     max-height: 200px;
+//     max-width: 30%;
+//     min-width:0%;
+// }
+// video{
+//   height: 300px !important;
+//   width: 300px !important;
+// }
+.video-ele1{
+  position: relative;
+  aspect-ratio: 16/9!important;
+  max-width: 90% !important;
+  max-height: 90%!important;
+  padding: 2%;
+  top:-5%;
+}
+.video-ele2{
+  position: relative;
+  aspect-ratio: 4/3 !important;
+  max-width: 45% !important;
+  max-height: 90% !important;
+  overflow: hidden;
+  padding: 2%;
+  top: -5%
+}
+.video-ele4{
+  position: relative;
+  aspect-ratio:5/4 !important;
+  max-width: 45% !important;
+  max-height: 45% !important;
+  overflow: hidden;
+  padding: 2%;
+  top: -5%  
+}
+
+.video-ele6{
+  position: relative!important;
+  aspect-ratio:3/2!important;
+  max-width: 33%!important;
+  max-height: 40%!important;
+  padding:1% !important;
+  top:-4.5% !important;
+}
+.video-ele{
+  position: relative;
+  aspect-ratio: 16/9 !important;
+  max-width: 45% !important;
+  max-height: 45% !important;
+  //overflow: hidden;
+  padding: 1%;
+  top:-4%
+}
+.presenting{
+  max-height: 90% !important;
+}
+.participant{
+  padding: 10px 0px;
+  font-size:19px!important;
+}
+@media screen and (max-width:768px) {
+  .video-ele{
+    max-height: 40% !important;
+    max-width: 30% !important;
+    aspect-ratio: 4/3;
+  }
+}
