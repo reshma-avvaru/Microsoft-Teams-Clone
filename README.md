@@ -13,7 +13,7 @@ The website is hosted at https://teams-client-892ac.web.app/landing
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Agile Methodology](#usage-of-agile-methodology)
-- [The Web Application](#try-the-web-application)
+- [The Web Application](#the-web-application)
 
 
 # Features of the Application
@@ -197,3 +197,8 @@ Please note: To run the machine on localhost:8000 you will add the following to 
 
 From the AMA session I had understood that inorder to develop software to meet the high requirements of present market agile methodology is the best practice. Understanding this I have incorporated it into my project
 The [ppt](https://drive.google.com/file/d/1rsDnsGo6Ms44HjQD3P7jJ2HnN-U909iw/view?usp=sharing) contains deatils of my sprints.
+
+# The Web Application
+
+I have hosted my Angular application using firebase hosting at https://teams-client-892ac.web.app/
+I have hosted my django REST API on heroku
