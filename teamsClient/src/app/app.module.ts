@@ -20,12 +20,12 @@ import {MatInputModule} from '@angular/material/input';
 import { PERSISTENCE } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from 'src/environments/environment';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import  {  NgxEmojiPickerModule  }  from  'ngx-emoji-picker';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MeetingsComponent } from './meetings/meetings.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,

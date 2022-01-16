@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-
+  firebaseConfig:{
+    apiKey: "AIzaSyBsFSvTTSQcbYpN4AHdWmHqeT-_7J0o0Lk",
+    authDomain: "teams-client-892ac.firebaseapp.com",
+    databaseURL: "https://teams-client-892ac-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "teams-client-892ac",
+    storageBucket: "teams-client-892ac.appspot.com",
+    messagingSenderId: "3500798714",
+    appId: "1:3500798714:web:3032525a5cf08a8e690f43",
+    measurementId: "G-X4M8C95GP3"
+  },
   //add firebase config here
 };
 
